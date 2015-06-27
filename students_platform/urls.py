@@ -5,4 +5,3 @@ urlpatterns = [
     url(r'^$', views.forum_list),
 	url(r'^$', views.post_list),
 ]
-
