@@ -1,27 +1,31 @@
+{% load staticfiles %}
 <html>
     <head>
         <title>Informatii despre examene</title>
+	       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	         <link rel="stylesheet" href="{% static "css/students_platform.css" %}">
+
     </head>
     <body>
-        <div>
+        <div class="page-header">
             <h1> Informatii despre examene</h1>
 
         <h2> Bine ati venit! </h2>
         </div>
-    {% for forum in forums %}
-        <div>
+<br> </br>
+<br> </br>
+{% for forum in forums %}
+    <div class="page-content">
+       <h2><a href="">{{ forum.title }}</a></h2>
+        <p>{{ forum.text|linebreaks }}</p>
+    </div>
+{% endfor %}
+<br> </br>
+<br> </br>
 
-            <h1><a href="{% url "students_platform.views.post_list" forum_name=forum.title %}">{{ forum.title }}</a></h1>
-
-        </div>
-    {% endfor %}
-
-      {% for p in posts %}
-      <div>
-        <h3><a href=""> {{ p.title}} </a></h3>
-        <p> post.author </p>
-      </div>
-      {% endfor %}
+<div class="footer">
+</div>
 
     </body>
 </html>
