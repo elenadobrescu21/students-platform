@@ -11,11 +11,7 @@
     {% for forum in forums %}
         <div>
 
-
-            <h1><a href="">{{ forum.title }}</a></h1>
-            <p>{{ forum.text|linebreaks }}</p>
-
-
+            <h1><a href="{% url "students_platform.views.post_list" forum_name=forum.title %}">{{ forum.title }}</a></h1>
 
         </div>
     {% endfor %}
