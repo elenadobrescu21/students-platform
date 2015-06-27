@@ -7,15 +7,14 @@ from django.shortcuts import redirect
 
 def forum_list(request):
     forums= Forum.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'students_platform/post_list.html', {'forums': forums})
+    return render(request, 'students_platform/forum_list.html', {'forums': forums})
+
 
 def post_list(request, forum_name):
-    posts = Post.objects.filter(forum__title__exact = forum_name().order_by('published_date')
-    return render(request, 'students_platform/post_list.html', {
-    	'posts': posts
-    	})
+    posts = Post.objects.filter(forum__title__exact = forum_name)
+    return render(request, 'students_platform/post_list.html', {'posts': posts})
 
-def post_detail(request, forum_name,pk):
+def post_detail(request, forum_name, pk):
 	post = get_object_or_404(Post, pk=pk, forum__title__exact = forum_name)
 	return 	render(request, 'students_platform/post_detail.html', {'post':post})
 
