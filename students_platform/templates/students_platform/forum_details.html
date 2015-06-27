@@ -1,6 +1,7 @@
 {% extends "students_platform/base.html" %}
 
 {% block content %}
+    <a href="{% url "students_platform.views.post_new" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     <div class="forum">
         {% for post in posts %}
             <div class="post">
