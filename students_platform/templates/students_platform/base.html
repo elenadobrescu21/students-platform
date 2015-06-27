@@ -1,37 +1,31 @@
 {% load staticfiles %}
 <html>
-    <head >
+    <head>
+        <title>Informatii despre examene</title>
 
-      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  		<link rel="stylesheet" href="{% static "css/blog.css" %}">
-  		<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-      <title>Students Platform</title>
-
-
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static "css/students_platform.css" %}">
     </head>
-
-  <body>
-
+<body>
       <div class="page-header">
+            <h1> Informatii despre examene</h1>
 
-          <h1><a href="/">Students Platform</a></h1>
-	        <a href="{% url "students_platform.views.post_new" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <h2> Bine ati venit! </h2>
+        </div>
+ <br> </br>
+<br> </br>
+    <div class="page-content">
+        
+           {% block content %}
+            {% endblock %}
+          
+    </div>
+<br></br>
+<br></br>
+<div class="footer">
 
-      </div>
-
-      <div class="content container">
-	        <div class="row">
-	            <div class="col-md-8">
-	            {% block content %}
-	            {% endblock %}
-	            </div>
-	        </div>
-
-      </div>
-
-  </body>
-
+Copyright © 2015 OSSS 
+</div>
+</body>
 </html>

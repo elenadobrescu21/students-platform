@@ -14,12 +14,17 @@ def post_list(request, forum_name):
     posts = Post.objects.filter(forum__title__exact = forum_name)
     return render(request, 'students_platform/post_list.html', {'posts': posts})
 
-def post_detail(request, forum_name, pk):
-	post = get_object_or_404(Post, pk=pk, forum__title__exact = forum_name)
-	return 	render(request, 'students_platform/post_detail.html', {'post':post})
+def post_details(request,pk):
+	post = get_object_or_404(Post, pk=pk)
+	return 	render(request, 'students_platform/post_details.html', {'post':post})
+
+def forum_details(request, pk):
+    forum = get_object_or_404(Forum, pk=pk)
+    posts = Post.objects.filter(forum__title__exact=forum.title)
+    return 	render(request, 'students_platform/forum_details.html', {'forum':forum,'posts':posts})
 
 def post_new(request):
-    if request.method == "POST":
+   if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
@@ -27,9 +32,9 @@ def post_new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('students_platform.views.post_detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'students_platform/post_edit.html', {'form': form})
+        else:
+            form = PostForm()
+            return render(request, 'students_platform/post_edit.html', {'form': form})
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -41,6 +46,6 @@ def post_edit(request, pk):
             post.published_date = timezone.now()
             post.save()
             return redirect('students_platform.views.post_detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'students_platform/post_edit.html', {'form': form})
+        else:
+            form = PostForm(instance=post)
+            return render(request, 'students_platform/post_edit.html', {'form': form})
