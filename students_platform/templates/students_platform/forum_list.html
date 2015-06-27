@@ -8,25 +8,24 @@
 
         <h2> Bine ati venit! </h2>
         </div>
-{% for forum in forums %}
-    <div>
-
-        
-        <h1><a href="">{{ forum.title }}</a></h1>
-        <p>{{ forum.text|linebreaks }}</p>
+    {% for forum in forums %}
+        <div>
 
 
+            <h1><a href="">{{ forum.title }}</a></h1>
+            <p>{{ forum.text|linebreaks }}</p>
 
-    </div>
-{% endfor %}
 
-{% for p in posts %}
-<div>
-  <h3><a href=""> {{ p.title}} </a></h3>
-  <p> post.author </p>
-</div>
-{% endfor %}
-      
+
+        </div>
+    {% endfor %}
+
+      {% for p in posts %}
+      <div>
+        <h3><a href=""> {{ p.title}} </a></h3>
+        <p> post.author </p>
+      </div>
+      {% endfor %}
+
     </body>
 </html>
-
