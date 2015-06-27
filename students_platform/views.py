@@ -25,7 +25,7 @@ def forum_details(request, pk):
     return 	render(request, 'students_platform/forum_details.html', {'forum':forum,'posts':posts})
 
 def post_new(request):
-   if request.method == "POST":
+    if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
@@ -33,9 +33,9 @@ def post_new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('students_platform.views.post_detail', pk=post.pk)
-        else:
-            form = PostForm()
-            return render(request, 'students_platform/post_edit.html', {'form': form})
+    else:
+        form = PostForm()
+    return render(request, 'students_platform/post_edit.html', {'form': form})
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -46,7 +46,7 @@ def post_edit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('students_platform.views.post_detail', pk=post.pk)
+            return redirect('students_platform.views.post_details', pk=post.pk)
     else:
         form = PostForm(instance=post)
-        return render(request, 'students_platform/post_edit.html', {'form': form})
+    return render(request, 'students_platform/post_edit.html', {'form': form})
